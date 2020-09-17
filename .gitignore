@@ -1,0 +1,16 @@
+# General
+_*
+*.zip
+*.tar.*
+*.lnk
+
+# Xilinx tool
+*.Xil
+*.log
+*.jou
+
+# Output product
+sd_card
+
+# Workspace
+.vscode
