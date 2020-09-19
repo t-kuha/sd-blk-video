@@ -40,6 +40,10 @@
     };
 };
 
+&wlcore {
+    compatible = "wlcore", "ti,wl1837";
+};
+
 &spi1 {
     status = "okay";
     num-cs = <1>;
