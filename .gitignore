@@ -14,3 +14,6 @@ sd_card
 
 # Workspace
 .vscode
+
+# my own
+petalinux/project-spec/meta-user/recipes-connectivity/
