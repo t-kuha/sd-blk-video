@@ -60,6 +60,38 @@ $ petalinux-package -p ${PRJ} --boot --format BIN \
 
 ***
 
+## SDSoC platform
+
+### Generate platform (w/o prebuilt data)
+
+```shell-session
+# Make sure to use xsct in SDx (not SDK)
+$ ${XILINX_SDX}/bin/xsct create_sdsoc_pfm.tcl
+```
+
+### Build pre-built HW
+
+- Generate pre-built data via building _hello_world_
+
+```shell-session
+$ mkdir _prj_0 && cd _prj_0
+$ sdscc ../src/hello_world.c -c -o hello_world.o \
+-sds-pf ../_pfm_0/sd_blk_video/export/sd_blk_video -sds-sys-config linux -target-os linux
+$ sdscc hello_world.o -o hello_world.elf \
+-sds-pf ../_pfm_0/sd_blk_video/export/sd_blk_video -sds-sys-config linux -target-os linux
+$ cd ..
+```
+
+### Create final platform (with pre-built HW)
+
+```shell-session
+$ ${XILINX_SDX}/bin/xsct create_sdsoc_pfm.tcl
+```
+
+- The platform will be in ``_pfm/sd_blk_video/export/sd_blk_video``
+
+***
+
 ## Creating PetaLinux project from scratch
 
 ```shell-session
