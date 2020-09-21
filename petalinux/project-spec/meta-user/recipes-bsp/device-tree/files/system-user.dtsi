@@ -43,6 +43,16 @@
     };
 };
 
+&gpio0 {
+    hdmi-en {
+        status = "okay";
+        label = "enable-hdmi";
+        gpio-hog;
+        gpios = <53 0 52 0>;
+        output-high;
+    };
+};
+
 &i2c1 {
     status = "okay";
     clock-frequency = <100000>;
