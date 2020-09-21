@@ -80,10 +80,6 @@
 
 &spi1 {
     status = "okay";
-    num-cs = <1>;
-    is-decoded-cs = <0>;
-    #address-cells = <1>;
-    #size-cells = <0>;
 
     dev@0 {
         compatible = "linux,spidev";
@@ -94,33 +90,12 @@
 
 &qspi {
     status = "okay";
-    is-dual = <0>;
-    num-cs = <1>;
-    xlnx,qspi-mode = <1>;
+    /*xlnx,qspi-mode = <0>;*/   /* Currenlty unused. */
 
     flash@0 {
         /* n25q128a: 16MiB */
-        #address-cells = <1>;
-        #size-cells =<1>;
-        compatible = "jedec,spi-nor";
-        reg = <0>;
-        spi-max-frequency = <50000000>;
+        compatible = "n25q128a11", "jedec,spi-nor";
         m25p,fast-read;
-
-        partition@bootloader {
-            /* BOOT.bin */
-            label = "bootloader";
-            reg = <0x0 0xe0000>;
-        };
-        partition@env {
-            label = "env";
-            reg = <0xe0000 0x20000>;
-        };
-        partition@image {
-            /* image.ub */
-            label = "image";
-            reg = <0x100000 0x500000>;
-        };
     };
 };
 
